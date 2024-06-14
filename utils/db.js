@@ -21,7 +21,7 @@ class DBClient {
     } else {
       database = 'files_manager';
     }
-    const client = new MongoClient(`mongodb://${host}:${port}/${database}`);
+    this.client = new MongoClient(`mongodb://${host}:${port}/${database}`);
     this.client.connect();
   }
 

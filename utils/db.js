@@ -22,7 +22,7 @@ class DBClient {
       database = 'files_manager';
     }
     const client = new MongoClient(`mongodb://${host}:${port}/${database}`);
-    this.myClient.connect();
+    this.client.connect();
   }
 
   isAlive() {
@@ -30,7 +30,7 @@ class DBClient {
   }
 
   async nbUsers() {
-    usersCollection = this.client.db().collection('users');
+    const usersCollection = this.client.db().collection('users');
     return usersCollection.countDocuments();
   }
 
@@ -38,7 +38,7 @@ class DBClient {
     const filesCollection = this.client.db().collection('files');
     return filesCollection.countDocuments();
   }
-
-  const dbClient = new DBClient();
-  export default dbClient;
 }
+
+const dbClient = new DBClient();
+export default dbClient;

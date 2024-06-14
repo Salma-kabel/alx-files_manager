@@ -1,5 +1,5 @@
 import { env } from 'process';
-import { MongoClient, ObjectId } from 'mongodb';
+import { MongoClient } from 'mongodb';
 
 class DBClient {
   constructor() {

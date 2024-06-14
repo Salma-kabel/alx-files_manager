@@ -1,4 +1,5 @@
 import dbClient from '../utils/db';
+import redisClient from '../utils/redis';
 
 class AppController {
   static async getStatus(request, response) {

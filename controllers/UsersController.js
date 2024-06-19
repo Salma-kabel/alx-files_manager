@@ -1,6 +1,5 @@
-import dbClient from '../utils/db';
 import crypto from 'crypto';
-
+import dbClient from '../utils/db';
 
 class UsersController {
   static async postNew(req, res) {

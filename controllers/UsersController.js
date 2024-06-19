@@ -11,7 +11,7 @@ class UsersController {
     if (!password) {
       return res.status(400).json({ error: 'Missing password' });
     }
-    const existingUser = await dbClient.users.findOne({ email });
+    const existingUser = await dbClient.client.db().collection('users').findOne({ email });
     if (existingUser) {
       return res.status(400).json({ error: 'Already exist' });
     }
@@ -21,7 +21,7 @@ class UsersController {
       password: hashedPassword,
     };
     try {
-      const result = await dbClient.users.insertOne(user);
+      const result = await dbClient.client.db().collection('users').insertOne(user);
       return res.status(201).json({ id: result.insertedId, email });
     } catch (error) {
       return res.status(500).json({ error: 'Internal server error' });

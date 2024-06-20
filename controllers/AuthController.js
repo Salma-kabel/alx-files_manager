@@ -1,7 +1,7 @@
 import { Buffer } from 'buffer';
 import { v4 } from 'uuid';
-import redisClient from '../utils/redis';
 import crypto from 'crypto';
+import redisClient from '../utils/redis';
 import dbClient from '../utils/db';
 
 class AuthController {
@@ -17,7 +17,7 @@ class AuthController {
       } else {
         const token = v4();
         await redisClient.set(`auth${token}`, user.id.toString(), 86400);
-        response.status(200).json({ token: token }).end();
+        response.status(200).json({ token }).end();
       }
     } catch (error) {
       response.status(401).json({ error: 'Unauthorized' }).end();

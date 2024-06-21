@@ -26,14 +26,6 @@ class UsersController {
       return res.status(500).json({ error: 'Internal server error' });
     }
   }
-
-  static async getMe(request, response) {
-    const { user } = request;
-    delete user.password;
-    user.id = user.id;
-    delete user.id;
-    response.status(200).json(user).end();
-  }
 }
 
 export default UsersController;
